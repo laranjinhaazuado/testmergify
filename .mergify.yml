@@ -4,7 +4,7 @@ queue_rules:
       - base=main
     merge_conditions:
       - base=main
-      - label = old-policy
+      - label = new-policy
 
 pull_request_rules:
   - name: auto-comment
