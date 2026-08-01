@@ -4,12 +4,12 @@ queue_rules:
       - base=main
     merge_conditions:
       - base=main
-      - "#approved-reviews-by >= 1"
 
 pull_request_rules:
-  - name: auto-comment
+  - name: auto-queue-attacker
     conditions:
       - base=main
+      - author=duatback-dev
     actions:
-      comment:
-        message: "PR #{{ number }} by {{ author }}"
+      queue:
+        name: default
