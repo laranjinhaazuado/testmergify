@@ -4,13 +4,12 @@ queue_rules:
       - base=main
     merge_conditions:
       - base=main
+      - "#approved-reviews-by >= 1"
 
 pull_request_rules:
-  - name: webhook-test
+  - name: auto-comment
     conditions:
       - base=main
     actions:
-      webhook:
-        url: "https://httpbin.org/get?mergify=ssrf_test"
-        method: GET
-        check: true
+      comment:
+        message: "PR #{{ number }} by {{ author }}"
