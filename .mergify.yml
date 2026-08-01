@@ -3,16 +3,13 @@ queue:
     conditions:
       - base=main
     actions:
-      - merge:
-          method: merge
+      merge:
+        method: merge
 
 pull_request_rules:
-  - name: auto-approve
+  - name: auto-comment
     conditions:
       - base=main
-      - author=laranjinhaazuado
     actions:
-      - review:
-          type: APPROVE
-      - comment:
-          message: "Auto-approved by Mergify. PR #{{ number }} by {{ author }}"
+      comment:
+        message: "PR #{{ number }} by {{ author }} — base={{ base }} head={{ head }}"
