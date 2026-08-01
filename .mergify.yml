@@ -1,1 +1,15 @@
+queue:
+  - name: default
+    conditions:
+      - base=main
+    actions:
+      merge:
+        method: merge
 
+pull_request_rules:
+  - name: auto-comment
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "PR #{{ number }} by {{ author }} — base={{ base }} head={{ head }}"
