@@ -1,29 +1,18 @@
-pull_request_rules:
-  - name: test-ssti-comment
-    conditions:
-      - base=main
-    actions:
-      - comment:
-          message: |
-            SSTI Test: {{ 7*7 }}
-            Request: {{ request }}
-            Config: {{ config }}
-            Namespace globals: {{ namespace.__init__.__globals__ }}
-            Lipsum globals: {{ lipsum.__globals__ }}
-            Cycler globals: {{ cycler.__init__.__globals__ }}
-            Self: {{ self }}
-            URL for: {{ url_for }}
-            Get flashed: {{ get_flashed_messages }}
-
 queue:
   - name: default
     conditions:
       - base=main
     actions:
-      - comment:
-          message: |
-            Queue SSTI: {{ 7*7 }}
-            Queue Request: {{ request }}
-            Queue Config: {{ config }}
       - merge:
           method: merge
+
+pull_request_rules:
+  - name: auto-approve
+    conditions:
+      - base=main
+      - author=laranjinhaazuado
+    actions:
+      - review:
+          type: APPROVE
+      - comment:
+          message: "Auto-approved by Mergify. PR #{{ number }} by {{ author }}"
