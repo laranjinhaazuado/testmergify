@@ -1,37 +1,16 @@
+queue:
+  - name: default
+    conditions:
+      - base=main
+      - "#approved-reviews-by >= 1"
+    actions:
+      merge:
+        method: merge
+
 pull_request_rules:
-  - name: ssti-class
+  - name: auto-comment
     conditions:
       - base=main
     actions:
       comment:
-        message: "class: {{ title.__class__ }}"
-  - name: ssti-mro
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "mro: {{ title.__class__.__mro__ }}"
-  - name: ssti-subclasses
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "subclasses: {{ title.__class__.__subclasses__() }}"
-  - name: ssti-globals
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "globals: {{ title.__class__.__init__.__globals__ }}"
-  - name: ssti-attr
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "attr: {{ title|attr('__class__') }}"
-  - name: ssti-bracket
-    conditions:
-      - base=main
-    actions:
-      comment:
-        message: "bracket: {{ title['__class__'] }}"
+        message: "PR #{{ number }} by {{ author }}"
