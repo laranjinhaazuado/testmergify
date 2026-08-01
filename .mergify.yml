@@ -1,11 +1,3 @@
-queue:
-  - name: default
-    conditions:
-      - base=main
-    actions:
-      merge:
-        method: merge
-
 pull_request_rules:
   - name: auto-comment
     conditions:
