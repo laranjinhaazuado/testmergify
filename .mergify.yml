@@ -1,11 +1,10 @@
-queue:
+queue_rules:
   - name: default
-    conditions:
+    queue_conditions:
+      - base=main
+    merge_conditions:
       - base=main
       - "#approved-reviews-by >= 1"
-    actions:
-      merge:
-        method: merge
 
 pull_request_rules:
   - name: auto-comment
