@@ -1,10 +1,13 @@
+merge_queue:
+  branch_protection_injection_mode: none
+
 queue_rules:
   - name: default
     queue_conditions:
       - base=main
     merge_conditions:
       - base=main
-      - label = new-policy
+      - label = old-policy
 
 pull_request_rules:
   - name: auto-comment
