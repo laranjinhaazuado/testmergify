@@ -1,6 +1,5 @@
 queue_rules:
   - name: default
-    branch_protection_injection_mode: none
     queue_conditions:
       - base=main
     merge_conditions:
