@@ -1,15 +1,16 @@
 queue_rules:
   - name: default
     queue_conditions:
-      - base=main
+      - base = main
     merge_conditions:
-      - base=main
+      - base = main
       - "#approved-reviews-by >= 1"
 
 pull_request_rules:
   - name: auto-comment
     conditions:
-      - base=main
+      - base = main
     actions:
       comment:
         message: "PR #{{ number }} by {{ author }}"
+
