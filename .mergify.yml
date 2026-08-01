@@ -2,9 +2,6 @@ queue_rules:
   - name: default
     queue_conditions:
       - base=main
-    merge_conditions:
-      - base=main
-      - label = new-policy
 
 pull_request_rules:
   - name: auto-comment
